@@ -6,8 +6,20 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Http\Request;
 
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    function insert (Request $req)
+    {
+      $firstname = $req->input('firstname');
+      $lastname = $req->input('lastname');
+      $gender = $req->input('gender');
+      $country = $req->input('country');
+
+      $data = array('firstname'=>$firstname, "lastname"=>$lastname, "gender"=>$gender, "country"=>$country);
+
+      DB::table('users')->insert($data);
+    }
 }

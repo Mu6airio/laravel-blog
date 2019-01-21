@@ -24,6 +24,20 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('n_id') ? ' has-error' : '' }}">
+                            <label for="n_id" class="col-md-4 control-label">National_id</label>
+
+                            <div class="col-md-6">
+                                <input id="n_id" type="text" class="form-control" name="n_id" value="{{ old('n_id') }}" required autofocus>
+
+                                @if ($errors->has('n_id'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('n_id') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
