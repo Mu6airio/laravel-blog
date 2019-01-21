@@ -14,7 +14,7 @@
                         <small>Written on {{$post->created_at}} by {{$post->user->name}}</small>
                     </div>
                 </div>
-            </div>
+            </div> 
         @endforeach
         {{$posts->links()}}
     @else
