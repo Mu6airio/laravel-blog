@@ -49,6 +49,7 @@ public function save (Request $request)
   $profile->lastname = $request->input ('lastname');
   $profile->gender = $request->input ('gender');
   $profile->country = $request->input('country');
+  $profile->IsProfile = 1;
 
   $profile->save();
 

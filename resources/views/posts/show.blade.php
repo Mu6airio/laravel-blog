@@ -3,7 +3,9 @@
 @section('content')
     <a href="/posts" class="btn btn-default">Go Back</a>
     <h1>{{$post->title}}</h1>
-    <img src="{{url('../')}}/storage/cover_images/{{$post->cover_image}}" width="210px" height="150px">
+    @if ($post->cover_image)
+    <img src="{{asset('cover_image/'.$post->cover_image)}}" width="210px" height="150px">
+    @endif
     <br><br>
     <div>
         {!!$post->body!!}
@@ -30,7 +32,7 @@
 
     @foreach ($post->comments as $comment)
     <tr>
-      
+
       	<div class="comment">
 
           <p><strong>Comment:</strong><br/>{{$comment->comment}}</p>

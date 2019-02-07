@@ -17,6 +17,7 @@ class PostsController extends Controller
     public function __construct()
     {
         $this->middleware('auth', ['except' => ['index', 'show']]);
+        $this->middleware('IsProfile', ['except' => ['show']]);
     }
 
     /**
@@ -32,7 +33,10 @@ class PostsController extends Controller
         //$posts = Post::orderBy('title','desc')->take(1)->get();
         //$posts = Post::orderBy('title','desc')->get();
 
-        $posts = Post::orderBy('created_at','desc')->paginate(10);
+        $posts =  DB::table('posts')
+        ->join('users','users.id','user_id')
+        ->where('gender', \Auth::user()->gender)
+         ->get();
         return view('posts.index')->with('posts', $posts);
     }
 
@@ -71,7 +75,7 @@ class PostsController extends Controller
             // Filename to store
             $fileNameToStore= $filename.'_'.time().'.'.$extension;
             // Upload Image
-            $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
+            $path = $request->file('cover_image')->storeAs('', $fileNameToStore);
         } else {
             $fileNameToStore = 'noimage.jpg';
         }
@@ -176,7 +180,7 @@ class PostsController extends Controller
             // Delete Image
             Storage::delete('public/cover_images/'.$post->cover_image);
         }
-        
+
         $post->delete();
         return redirect('/posts')->with('success', 'Post Removed');
     }

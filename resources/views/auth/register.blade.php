@@ -24,15 +24,15 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('n_id') ? ' has-error' : '' }}">
-                            <label for="n_id" class="col-md-4 control-label">National_id</label>
+                        <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
+                            <label for="username" class="col-md-4 control-label">National_id</label>
 
                             <div class="col-md-6">
-                                <input id="n_id" type="text" class="form-control" name="n_id" value="{{ old('n_id') }}" required autofocus>
+                                <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" required autofocus>
 
-                                @if ($errors->has('n_id'))
+                                @if ($errors->has('username'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('n_id') }}</strong>
+                                        <strong>{{ $errors->first('username') }}</strong>
                                     </span>
                                 @endif
                             </div>

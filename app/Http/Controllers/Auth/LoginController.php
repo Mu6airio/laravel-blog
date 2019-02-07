@@ -30,6 +30,8 @@ class LoginController extends Controller
      */
     protected $redirectTo = '/dashboard';
 
+
+
     /**
      * Create a new controller instance.
      *
@@ -39,6 +41,12 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function username()
+    {
+        return 'username';
+    }
+
 
     public function redirectToFacebook(){
       return Socialite::driver('facebook')->redirect();

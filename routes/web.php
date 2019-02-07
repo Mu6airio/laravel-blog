@@ -35,6 +35,7 @@ Route::get('/login/facebook', 'Auth\LoginController@redirectToFacebook')->name('
 Route::get('/login/facebook/callback', 'Auth\LoginController@handleFacebookCallback')->name('fbcallback');
 
 
+
 Route::get('/profile/save', 'ProfileController@index');
 Route::post('/profile/save', 'ProfileController@save');
 
