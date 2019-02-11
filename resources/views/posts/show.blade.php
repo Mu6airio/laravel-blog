@@ -3,15 +3,15 @@
 @section('content')
     <a href="/posts" class="btn btn-default">Go Back</a>
     <h1>{{$post->title}}</h1>
-    @if ($post->cover_image)
-    <img src="{{asset('cover_image/'.$post->cover_image)}}" width="210px" height="150px">
+    @if ($post->cover_image != 'noimage.jpg')
+    <img src="{{asset('cover_image/public/cover_images/'.$post->cover_image)}}" width="210px" height="150px">
     @endif
     <br><br>
     <div>
         {!!$post->body!!}
     </div>
     <hr>
-    <small>Written on {{$post->created_at}} by {{$post->user->name}}</small>
+    <small>Written on {{$post->created_at}} by {{$post->name}}</small>
     <hr>
     @if(!Auth::guest())
         @if(Auth::user()->id == $post->user_id)

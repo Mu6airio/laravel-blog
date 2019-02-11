@@ -10,11 +10,11 @@
                 <div class="row">
                     <div class="col-md-4 col-sm-4">
                       @if ($post->cover_image != 'noimage.jpg')
-                        <img src="{{asset('cover_image/'.$post->cover_image)}}" width="210px" height="150px">
+                        <img src="{{asset('cover_image/public/cover_images/'.$post->cover_image)}}" width="210px" height="150px">
                         @endif
                     </div>
                     <div class="col-md-8 col-sm-8">
-                        <h3><a href="/posts/{{$post->id}}">{{$post->title}}</a></h3>
+                        <h3><a href="/posts/{{$post->id}}">  {{$post->title}}</a></h3>
                         <small>Written on {{$post->created_at}} by {{$post->name}}</small>
                     </div>
                 </div>

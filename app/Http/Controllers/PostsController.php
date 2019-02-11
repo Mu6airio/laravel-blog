@@ -17,7 +17,7 @@ class PostsController extends Controller
     public function __construct()
     {
         $this->middleware('auth', ['except' => ['index', 'show']]);
-        $this->middleware('IsProfile', ['except' => ['show']]);
+        $this->middleware('IsProfile');
     }
 
     /**
@@ -33,10 +33,11 @@ class PostsController extends Controller
         //$posts = Post::orderBy('title','desc')->take(1)->get();
         //$posts = Post::orderBy('title','desc')->get();
 
-        $posts =  DB::table('posts')
-        ->join('users','users.id','user_id')
-        ->where('gender', \Auth::user()->gender)
+        $posts =  DB::table('users')
+        ->join('posts','users.id','posts.user_id')
+        ->where('users.gender', \Auth::user()->gender)
          ->get();
+         // dd($posts);
         return view('posts.index')->with('posts', $posts);
     }
 
